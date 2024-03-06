@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.nmp.adv160421002week2.databinding.FragmentResultBinding
-
+import androidx.navigation.Navigation
 
 class ResultFragment : Fragment() {
     private lateinit var binding: FragmentResultBinding
@@ -23,6 +23,11 @@ class ResultFragment : Fragment() {
         if (arguments != null) {
             var score = ResultFragmentArgs.fromBundle(requireArguments()).score
             binding.txtScore.text = "Your score is $score"
+        }
+
+        binding.btnBackMenu.setOnClickListener(){
+            val action = ResultFragmentDirections.actionMainFragment()
+            Navigation.findNavController(it).navigate(action)
         }
     }
 }
